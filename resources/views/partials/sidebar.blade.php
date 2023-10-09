@@ -1,3 +1,4 @@
+{{-- SIDEBAR KIRI --}}
 <nav id="sidebar" aria-label="Main Navigation">
     <!-- Side Header -->
     <div class="content-header">

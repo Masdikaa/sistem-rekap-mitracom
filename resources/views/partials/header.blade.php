@@ -1,3 +1,4 @@
+{{-- HEADER / NAVBAR --}}
 <header id="page-header">
     <!-- Header Content -->
     <div class="content-header">
