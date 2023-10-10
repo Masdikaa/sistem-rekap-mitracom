@@ -78,21 +78,21 @@
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                    <a class="nav-main-link{{ request()->is('rekapitulasi') ? ' active' : '' }}" href="/rekapitulasi">
                         <i class="nav-main-link-icon bi bi-clipboard-data"></i>
                         <span class="nav-main-link-name">Rekapitulasi</span>
                     </a>
                 </li>
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                    <a class="nav-main-link{{ request()->is('input-service') ? ' active' : '' }}" href="/input-service">
                         <i class="nav-main-link-icon bi bi-folder-plus"></i>
                         <span class="nav-main-link-name">Input Service</span>
                     </a>
                 </li>
 
                 <li class="nav-main-heading">Data Master</li>
-                <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
+                <li class="nav-main-item{{ request()->is('datamaster/*') ? ' open' : '' }}">
 
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                         <i class="nav-main-link-icon bi bi-journal-plus"></i>
@@ -102,28 +102,23 @@
                     <ul class="nav-main-submenu">
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">
+                            <a class="nav-main-link{{ request()->is('datamaster/user') ? ' active' : '' }}" href="/datamaster/user">
                                 <span class="nav-main-link-name">User</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}" href="/pages/slick">
+                            <a class="nav-main-link{{ request()->is('datamaster/kategori') ? ' active' : '' }}" href="/datamaster/kategori">
                                 <span class="nav-main-link-name">Kategori</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
+                            <a class="nav-main-link{{ request()->is('datamaster/barang') ? ' active' : '' }}" href="/datamaster/barang">
                                 <span class="nav-main-link-name">Barang</span>
                             </a>
                         </li>
 
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
-                                <span class="nav-main-link-name">Pelanggan</span>
-                            </a>
-                        </li>
 
                     </ul>
                 </li>
