@@ -48,9 +48,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::get('/datamaster/user', 'UserController@index');
     Route::get('/datamaster/kategori', 'KategoriController@index');
     Route::get('/datamaster/barang', 'BarangController@index');
-   
-
-
-
-
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
