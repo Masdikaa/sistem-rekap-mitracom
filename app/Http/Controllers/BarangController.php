@@ -9,6 +9,6 @@ class BarangController extends Controller
     public function index()
     {
         // Logic for displaying a view
-        return view('pages.datamaster.master-barang');
+        return view('pages.datamaster.barang.index');
     }
 }

@@ -69,6 +69,7 @@
         <div class="content-side">
 
             <ul class="nav-main">
+                {{-- @can('viewAdminPanel', auth()->user()) --}}
 
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
@@ -92,7 +93,7 @@
                 </li>
 
                 <li class="nav-main-heading">Data Master</li>
-                <li class="nav-main-item{{ request()->is('datamaster/*') ? ' open' : '' }}">
+                <li class="nav-main-item{{ request()->is('*') ? ' open' : '' }}">
 
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                         <i class="nav-main-link-icon bi bi-journal-plus"></i>
@@ -100,21 +101,21 @@
                     </a>
 
                     <ul class="nav-main-submenu">
-
+                        @can('viewAdminPanel', auth()->user())
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster/user') ? ' active' : '' }}" href="/datamaster/user">
+                            <a class="nav-main-link{{ request()->is('datamaster-user') ? ' active' : '' }}" href="/datamaster-user">
                                 <span class="nav-main-link-name">User</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster/kategori') ? ' active' : '' }}" href="/datamaster/kategori">
+                            <a class="nav-main-link{{ request()->is('datamaster-kategori') ? ' active' : '' }}" href="/datamaster-kategori">
                                 <span class="nav-main-link-name">Kategori</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster/barang') ? ' active' : '' }}" href="/datamaster/barang">
+                            <a class="nav-main-link{{ request()->is('datamaster-barang') ? ' active' : '' }}" href="/datamaster-barang">
                                 <span class="nav-main-link-name">Barang</span>
                             </a>
                         </li>
@@ -130,6 +131,7 @@
                     </a>
                 </li>
             </ul>
+            {{-- @endcan --}}
         </div>
         <!-- END Side Navigation -->
     </div>

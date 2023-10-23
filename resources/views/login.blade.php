@@ -32,24 +32,39 @@
                                 <h3 class="block-title text-start">Sign In to Your Account</h3>
                             </div>
                             <div class="block-content fs-sm p-3">
+                                @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                            @if (session('loginError'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('loginError') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            @endif
 
-                                <form>
+                                <form action="/authenticate" method="POST">
+                                    @csrf
 
                                     <div class="form-group text-start">
                                         <label class="text-muted" for="exampleInputEmail1">
                                             Username
                                         </label>
-                                        <input type="text" class="form-control" id="inputUsername" aria-describedby="emailHelp">
+                                        <input type="text" class="form-control" id="usernamea" name="username" aria-describedby="emailHelp">
                                     </div>
 
                                     <div class="form-group text-start mt-4 md-4">
                                         <label class="text-muted" for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" class="form-control" id="password" name="password">
                                     </div>
 
-                                    <a class="btn btn-alt-primary mt-4 px-3 py-2" href="/dashboard">
-                                        Login
-                                    </a>
+                                    <button class="btn btn-primary px-4" type="submit">Login</button>
                                 </form>
 
                             </div>

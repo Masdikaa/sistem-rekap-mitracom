@@ -1,14 +1,15 @@
-@extends('layouts.mitra-main')ng
+@extends('layouts.mitra-main')
 
-@section('title', 'Master Kategori')
+@section('title', 'Master User')
 @section('content')
+  
   <!-- Hero -->
   <div class="bg-body-light">
     <div class="content content-full">
       <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
         <div class="flex-grow-1">
           <h1 class="h3 fw-bold mb-2">
-           MANAGE KATEGORI
+           MANAGE USER
           </h1>
           <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-alt">
@@ -16,13 +17,13 @@
                 <a class="link-fx" href="javascript:void(0)">Data Master</a>
               </li>
               <li class="breadcrumb-item" aria-current="page">
-                Kategori
+                User
               </li>
             </ol>
           </nav>
         </div>
-        <a href="" class="btn btn-bg btn-success">
-            <i class="fa fa-plus"></i> Add Kategori
+        <a href="{{ route('datamaster-user.create') }}" class="btn btn-bg btn-success">
+            <i class="fa fa-plus"></i> Add User
         </a>
 
       </div>
@@ -37,7 +38,7 @@
     <div class="block block-rounded">
       <div class="block-header block-header-default">
         <h3 class="block-title">
-          Table Kategori
+          Table User
         </h3>
       </div>
       <div class="block-content block-content-full">
@@ -46,26 +47,39 @@
           <thead>
             <tr>
               <th class="text-center" style="width: 80px;">#</th>
-              <th>Name</th>
-              <th class="d-none d-sm-table-cell" style="width: 30%;">Email</th>
-              <th style="width: 15%;">Registered</th>
+              <th>Username</th>
+              <th class="d-none d-sm-table-cell" style="width: 25%;">Role</th>
+              <th class="d-none d-sm-table-cell" style="width: 25%;">Status</th>
+              <th style="width: 15%;">Action</th>
             </tr>
           </thead>
           <tbody>
-            @for ($i = 1; $i < 21; $i++)
+            @foreach ( $data as $data)
               <tr>
-                <td class="text-center">{{ $i }}</td>
-                <td class="fw-semibold">
-                  <a href="javascript:void(0)">John Doe</a>
-                </td>
-                <td class="d-none d-sm-table-cell">
-                  client{{ $i }}<span class="text-muted">@example.com</span>
-                </td>
-                <td class="text-muted">
-                  {{ rand(2, 10) }} days ago
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td class="fw-semibold">{{ $data->username }}</td>
+                <td class="fw-semibold">{{ $data->role }}</td>
+                <td class="fw-semibold">{{ $data->status }}</td>
+                <td>
+                  <form action="{{ route('datamaster-user.destroy', $data->idUser) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    
+                        <a href="{{ route('datamaster-user.edit', $data->idUser) }}"
+                            class="btn btn-sm btn-primary">
+                            <i class="cil-pencil me-1"></i> Ubah
+                        </a>
+                        <button type="submit"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Apakah Anda yakin menghapus data ini?');">
+                            <i class="cil-trash me-1"></i> Hapus
+                        </button>
+                    
+                </form>
                 </td>
               </tr>
-            @endfor
+            @endforeach
+           
           </tbody>
         </table>
       </div>
