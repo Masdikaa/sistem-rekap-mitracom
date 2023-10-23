@@ -70,7 +70,6 @@
 
             <ul class="nav-main">
                 {{-- @can('viewAdminPanel', auth()->user()) --}}
-
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
                         <i class="nav-main-link-icon bi bi-house"></i>
@@ -101,7 +100,7 @@
                     </a>
 
                     <ul class="nav-main-submenu">
-                        @can('viewAdminPanel', auth()->user())
+                        {{-- @can('viewAdminPanel', auth()->user()) --}}
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('datamaster-user') ? ' active' : '' }}" href="/datamaster-user">
                                 <span class="nav-main-link-name">User</span>

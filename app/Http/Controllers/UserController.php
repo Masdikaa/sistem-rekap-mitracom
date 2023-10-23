@@ -25,13 +25,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create([
-                    'username' =>($request->input('username')),
-                    'password' =>Hash::make($request->input('password')),
-                    'role' =>($request->input('role')),
-                ]);
+            'username' => ($request->input('username')),
+            'password' => Hash::make($request->input('password')),
+            'role' => ($request->input('role')),
+        ]);
 
-                return redirect()->route('datamaster-user.index');
+        return redirect()->route('datamaster-user.index');
     }
+
     public function edit(string $id)
     {
 
@@ -48,7 +49,7 @@ class UserController extends Controller
             'username' => $request->input('username'),
             'role' => $request->input('role'),
         ]);
-    
+
         // Check if a new password was provided
         if ($request->filled('password')) {
             // Hash the new password and update it
@@ -70,4 +71,3 @@ class UserController extends Controller
             ->route('datamaster-user.index');
     }
 }
-

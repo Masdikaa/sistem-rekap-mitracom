@@ -39,22 +39,22 @@ use App\Http\Controllers\HomeController;
 // Route::get('/input-service', function () {
 //     return view('pages.input-service');
 // });
-// Route::get('/dashboard', function () {
-//     return view('pages.dashboard');
+// Route::get('/kategoricr', function () {
+//     return view('pages.datamaster.kategori.create');
 // });
 
 Route::namespace('App\Http\Controllers')->group(function () {
 
     //login
-    Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
-    Route::post('/authenticate', [LoginController::class,'authenticate'])->name('authenticate');
-    Route::get('/logout', [LoginController::class,'logout']);
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+    Route::get('/logout', [LoginController::class, 'logout']);
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/', [HomeController::class, 'index']);
         Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-        // admin
+        // Admin
         Route::get('/dashboard', function () {
             return view('pages.dashboard');
         });
@@ -70,10 +70,10 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.dashboard');
         });
+
+        // Route datamaster
         Route::resource('/datamaster-kategori', KategoriController::class);
         Route::resource('/datamaster-user', UserController::class);
         Route::resource('/datamaster-barang', BarangController::class);
     });
-
 });
-
