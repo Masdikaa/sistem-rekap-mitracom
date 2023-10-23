@@ -58,11 +58,11 @@
                                 <td>
 
                                     {{-- Button edit and delete --}}
-                                    <form action="" method="">
+                                    <form action="{{ route('datamaster-kategori.destroy', $data->idKategori) }}" method="POST">
                                         @csrf
                                         @method('delete')
 
-                                        <a href="" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('datamaster-kategori.edit', $data->idKategori) }}" class="btn btn-sm btn-primary">
                                             <i class="cil-pencil me-1"></i> Ubah
                                         </a>
 
@@ -72,20 +72,6 @@
                                         </button>
 
                                     </form>
-
-                                    {{-- <form action="{{ route('datamaster-user.destroy', $data->idUser) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-
-                                        <a href="{{ route('datamaster-user.edit', $data->idUser) }}" class="btn btn-sm btn-primary">
-                                            <i class="cil-pencil me-1"></i> Ubah
-                                        </a>
-                                        <button type="submit" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Apakah Anda yakin menghapus data ini?');">
-                                            <i class="cil-trash me-1"></i> Hapus
-                                        </button>
-
-                                    </form> --}}
 
                                 </td>
                             </tr>

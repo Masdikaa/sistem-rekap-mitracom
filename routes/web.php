@@ -40,7 +40,7 @@ use App\Http\Controllers\HomeController;
 //     return view('pages.input-service');
 // });
 // Route::get('/kategoricr', function () {
-//     return view('pages.datamaster.kategori.create');
+//     return view('pages.datamaster.kategori.edit');
 // });
 
 Route::namespace('App\Http\Controllers')->group(function () {

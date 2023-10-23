@@ -23,6 +23,7 @@ class KategoriController extends Controller
         return view('pages.datamaster.kategori.create',);
     }
 
+    // Insert to database
     public function store(Request $request)
     {
         $category = Kategori::create([
@@ -30,5 +31,36 @@ class KategoriController extends Controller
         ]);
 
         return redirect()->route('datamaster-kategori.index');
+    }
+
+    // Edit Data
+    public function edit(string $id)
+    {
+
+        $category = Kategori::find($id);
+
+        return view('pages.datamaster.kategori.edit', [
+            'kategori' => $category
+        ]);
+    }
+
+    public function update(Request $request, Kategori $category)
+    {
+        $category->update([
+            //? model -------- name html
+            'kategori' => $request->input('category')
+        ]);
+
+        return redirect()->route('datamaster-kategori.index');
+    }
+
+
+    // Delete data
+    public function destroy(string $id)
+    {
+        $category = Kategori::find($id);
+        $category->delete();
+        return redirect()
+            ->route('datamaster-kategori.index');
     }
 }
