@@ -43,22 +43,28 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user->update([
+        // Create an array with the data to update
+        $user = User::find($id);
+        $data = [
             'username' => $request->input('username'),
             'role' => $request->input('role'),
-        ]);
+        ];
 
         // Check if a new password was provided
         if ($request->filled('password')) {
-            // Hash the new password and update it
-            $user->update([
-                'password' => Hash::make($request->input('password')),
-            ]);
+            // Hash the new password and add it to the data
+            $data['password'] = Hash::make($request->input('password'));
         }
+
+        // Update the user with the combined data
+
+        $user->update($data);
+
         return redirect()->route('datamaster-user.index');
     }
+
 
 
     public function destroy(string $id)

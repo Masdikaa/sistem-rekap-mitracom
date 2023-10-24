@@ -44,8 +44,9 @@ class KategoriController extends Controller
         ]);
     }
 
-    public function update(Request $request, Kategori $category)
+    public function update(Request $request, $id)
     {
+        $category = Kategori::find($id);
         $category->update([
             //? model -------- name html
             'kategori' => $request->input('category')

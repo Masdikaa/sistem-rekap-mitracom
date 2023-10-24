@@ -46,16 +46,16 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 80px;">No</th>
-                            <th>Nama Kategori</th>
-                            <th style="width: 15%;">Action</th>
+                            <th class="text-center">Nama Kategori</th>
+                            <th class="text-center" style="width: 15%;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $data)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td class="fw-semibold">{{ $data->kategori }}</td>
-                                <td>
+                                <td class="fw-semibold text-center">{{ $data->kategori }}</td>
+                                <td class="text-center">
 
                                     {{-- Button edit and delete --}}
                                     <form action="{{ route('datamaster-kategori.destroy', $data->idKategori) }}" method="POST">
@@ -63,12 +63,12 @@
                                         @method('delete')
 
                                         <a href="{{ route('datamaster-kategori.edit', $data->idKategori) }}" class="btn btn-sm btn-primary">
-                                            <i class="cil-pencil me-1"></i> Ubah
+                                            <i class="nav-main-link-icon bi bi-pencil-square"></i>
                                         </a>
 
                                         <button type="submit" class="btn btn-sm btn-danger"
                                             onclick="return confirm('Apakah Anda yakin menghapus data ini?');">
-                                            <i class="cil-trash me-1"></i> Hapus
+                                            <i class="nav-main-link-icon bi bi-trash"></i>
                                         </button>
 
                                     </form>

@@ -66,11 +66,12 @@
                                         @method('delete')
 
                                         <a href="{{ route('datamaster-user.edit', $data->idUser) }}" class="btn btn-sm btn-primary">
-                                            <i class="cil-pencil me-1"></i> Ubah
+                                            <i class="nav-main-link-icon bi bi-pencil-square"></i>
                                         </a>
+
                                         <button type="submit" class="btn btn-sm btn-danger"
                                             onclick="return confirm('Apakah Anda yakin menghapus data ini?');">
-                                            <i class="cil-trash me-1"></i> Hapus
+                                            <i class="nav-main-link-icon bi bi-trash"></i>
                                         </button>
 
                                     </form>
