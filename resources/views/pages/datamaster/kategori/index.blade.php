@@ -1,6 +1,7 @@
 @extends('layouts.mitra-main')
 
 @section('title', 'Master Kategori')
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">

@@ -1,6 +1,7 @@
 @extends('layouts.simple')
-
+@section('title', 'Login Mitracom')
 @section('content')
+
     <!-- Hero -->
     <div class="hero bg-body-extra-light overflow-hidden">
         <div class="hero-inner">

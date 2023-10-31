@@ -58,9 +58,9 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="fw-semibold">{{ $data->username }}</td>
-                                <td class="fw-semibold">{{ $data->role }}</td>
-                                <td class="fw-semibold">{{ $data->status }}</td>
-                                <td>
+                                <td class="fw-semibold">{{ ucwords($data->role) }}</td>
+                                <td class="fw-semibold">{{ ucwords($data->status) }}</td>
+                                <td class="text-center">
                                     <form action="{{ route('datamaster-user.destroy', $data->idUser) }}" method="POST">
                                         @csrf
                                         @method('delete')
