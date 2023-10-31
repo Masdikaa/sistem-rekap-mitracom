@@ -6,15 +6,13 @@
     <!-- Hero -->
     <div class="bg-body-light">
         <div class="content content-full">
-            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <div class="flex-grow-1">
-                    <h1 class="h3 fw-bold mb-2">
-                        MANAGE KATEGORI
-                    </h1>
-                    <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                    <h1 class="h3 fw-bold mb-2">MANAGE KATEGORI</h1>
+                    <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-2" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-alt">
                             <li class="breadcrumb-item">
-                                <a class="link-fx" href="javascript:void(0)">Data Master</a>
+                                <a class="link-fx" href="#">Data Master</a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page">
                                 Kategori
@@ -22,10 +20,6 @@
                         </ol>
                     </nav>
                 </div>
-                <a href="{{ route('datamaster-kategori.create') }}" class="btn btn-bg btn-success">
-                    <i class="fa fa-plus"></i> Add Kategori
-                </a>
-
             </div>
         </div>
     </div>
@@ -40,6 +34,12 @@
                 <h3 class="block-title">
                     Table Kategori
                 </h3>
+
+                <a href="{{ route('datamaster-kategori.create') }}" class="btn btn-bg btn-success my-2">
+                    <i class="fa fa-plus me-1"></i>
+                    <span style="font-size: 12px; line-height: 12px;" class="block-title">Add Kategori</span>
+                </a>
+
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->

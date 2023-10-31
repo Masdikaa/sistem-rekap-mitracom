@@ -92,7 +92,7 @@
                 </li>
 
                 <li class="nav-main-heading">Data Master</li>
-                <li class="nav-main-item{{ request()->is('*') ? ' open' : '' }}">
+                <li class="nav-main-item {{ request()->is('*') ? 'open' : '' }}">
 
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                         <i class="nav-main-link-icon bi bi-journal-plus"></i>
@@ -122,13 +122,14 @@
 
                     </ul>
                 </li>
-                <li class="nav-main-heading">More</li>
+
+                {{-- <li class="nav-main-heading">More</li>
                 <li class="nav-main-item open">
                     <a class="nav-main-link" href="/">
                         <i class="nav-main-link-icon si si-globe"></i>
                         <span class="nav-main-link-name">Landing</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
             {{-- @endcan --}}
         </div>
