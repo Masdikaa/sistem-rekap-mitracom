@@ -36,118 +36,34 @@
             </div>
             <div class="block-content block-content-full">
                 {{-- Form input data --}}
-                <form>
-
+                <form action="{{ route('input-service.store') }}" method="POST" id="insertCustomer">
+                    @csrf
                     <div>
-                        <label class="form-label" for="username">Nama</label><small class="text-danger"> *</small>
-                        <input type="text" class="form-control" id="" name="" placeholder="Nama Customer">
+                        <label class="form-label" for="nama">Nama</label><small class="text-danger"> *</small>
+                        <input type="text" class="form-control" id="nama-customer" name="nama-customer" placeholder="Nama Customer">
                     </div>
 
                     <div class="mt-4">
-                        <label class="form-label" for="username">Kategori Barang</label><small class="text-danger"> *</small>
-                        <select class="form-select" name="" id="">
-                            <option>Pilih Kategori</option>
-                            <option value="Batal">Batal</option>
-                            <option value="Berhasil">Berhasil</option>
-                            <option value="Dalam Perbaikan">Dalam Perbaikan</option>
-                        </select>
+                        <label class="form-label" for="nohp">No HP</label><small class="text-danger"> *</small>
+                        <input type="text" class="form-control" id="hp-customer" name="hp-customer" placeholder="081234567891">
                     </div>
 
                     <div class="mt-4">
-                        <label class="form-label" for="username">Nama Barang</label><small class="text-danger"> *</small>
-                        <input type="text" class="form-control" id="" name="" placeholder="Nama Customer">
+                        <label class="form-label" for="alamat">Alamat</label><small class="text-danger"> *</small>
+                        <textarea class="form-control" id="alamat-customer" name="alamat-customer" placeholder="Masukan alamat customer"></textarea>
                     </div>
 
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Kerusakan Barang</label><small class="text-danger"> *</small>
-                        <textarea class="form-control" id="" name="" placeholder=""></textarea>
+                    <div class="d-flex justify-content-end mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="me-2">Next</span>
+                            <i class="nav-main-link-icon bi bi-arrow-right"></i>
+                        </button>
                     </div>
-
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Kelengkapan</label><small class="text-danger"> *</small>
-                        <input type="text" class="form-control" id="" name="" placeholder="">
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Estimasi Biaya</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            <input type="text" class="form-control" id="" name="" placeholder="150.000.000">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Tanggal Masuk</label><small class="text-danger"> *</small>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Tanggal</span>
-                            </div>
-                            <input type="date" class="form-control" id="" name="" placeholder="DD-MM-YYYY" value="">
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Estimasi Selesai</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Tanggal</span>
-                            </div>
-                            <input type="date" class="form-control" id="" name="" placeholder="DD-MM-YYYY" value="">
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Tanggal Ambil</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Tanggal</span>
-                            </div>
-                            <input type="date" class="form-control" id="" name="" placeholder="DD-MM-YYYY" value="">
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Biaya Perbaikan</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            <input type="text" class="form-control" id="" name="" placeholder="150.000.000">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Status</label><small class="text-danger"> *</small>
-                        <select class="form-select" name="">
-                            <option>Pilih Status</option>
-                            <option value="Batal">Batal</option>
-                            <option value="Berhasil">Berhasil</option>
-                            <option value="Dalam Perbaikan">Dalam Perbaikan</option>
-                        </select>
-                    </div>
-
-                    <div class="mt-4">
-                        <label class="form-label" for="username">Alasan Pembatalan</label>
-                        <textarea class="form-control" id="" name="" placeholder=""></textarea>
-                    </div>
-
 
                 </form>
-
             </div>
         </div>
         <!-- END Dynamic Table Full -->
-
     </div>
     <!-- END Page Content -->
-
 @endsection

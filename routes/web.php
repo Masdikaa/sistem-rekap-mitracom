@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
-
-
+use App\Http\Controllers\InputServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,23 +28,9 @@ use App\Http\Controllers\HomeController;
 // Route::view('/pages/blank', 'pages.blank');
 // Dari Template =======================================================
 
-
-// Route::get('/example', function () {
-//     return view('pages.dashboard');
-// });
-// Route::get('/rekapitulasi', function () {
-//     return view('pages.rekapitulasi');
-// });
-// Route::get('/input-service', function () {
-//     return view('pages.input-service');
-// });
-// Route::get('/kategoricr', function () {
-//     return view('pages.datamaster.kategori.edit');
-// });
-
 Route::namespace('App\Http\Controllers')->group(function () {
 
-    //login
+    //Login
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
     Route::get('/logout', [LoginController::class, 'logout']);
@@ -58,15 +43,18 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.dashboard');
         });
+
         Route::get('/example', function () {
             return view('pages.dashboard');
         });
+
         Route::get('/rekapitulasi', function () {
             return view('pages.rekapitulasi');
         });
-        Route::get('/input-service', function () {
-            return view('pages.input-service');
-        });
+
+        // Route::get('/input-service', [InputServiceController::class, 'index'])->name('input-service');
+        // Route::post('/customer-store', 'InputServiceController@store')->name('customer.store');
+
         Route::get('/dashboard', function () {
             return view('pages.dashboard');
         });
@@ -75,5 +63,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::resource('/datamaster-kategori', KategoriController::class);
         Route::resource('/datamaster-user', UserController::class);
         Route::resource('/datamaster-barang', BarangController::class);
+
+        // Insert Data Customer
+        Route::resource('/input-service', InputServiceController::class);
     });
 });

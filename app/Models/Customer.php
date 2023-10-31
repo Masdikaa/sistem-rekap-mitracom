@@ -13,5 +13,11 @@ class Customer extends Model
     protected $guarded = ['idCustomer'];
     protected $primaryKey = 'idCustomer';
 
+    protected $fillable = [
+        'namaCustomer',
+        'noHP',
+        'alamat'
+    ];
+
     public $timestamps = false;
 }
