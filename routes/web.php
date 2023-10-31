@@ -52,13 +52,6 @@ Route::namespace('App\Http\Controllers')->group(function () {
             return view('pages.rekapitulasi');
         });
 
-        // Route::get('/input-service', [InputServiceController::class, 'index'])->name('input-service');
-        // Route::post('/customer-store', 'InputServiceController@store')->name('customer.store');
-
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard');
-        });
-
         // Route datamaster
         Route::resource('/datamaster-kategori', KategoriController::class);
         Route::resource('/datamaster-user', UserController::class);
@@ -66,5 +59,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
         // Insert Data Customer
         Route::resource('/input-service', InputServiceController::class);
+
+        Route::post('/authenticate', [InputServiceController::class, 'storeBarang'])->name('store-barang');
     });
 });

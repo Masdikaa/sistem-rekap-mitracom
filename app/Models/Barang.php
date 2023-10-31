@@ -13,12 +13,18 @@ class Barang extends Model
     protected $guarded = ['idBarang'];
     protected $primaryKey = 'idBarang';
 
-    // protected $fillable = [
-    //     'namaUser',
-    //     'password',
-    //     'level',
-    //     'status'
-    // ];
+    protected $fillable = [
+        'namaBarang',
+        'kerusakan',
+        'kelengkapan',
+        'estimasiBiaya',
+        'tanggalMasuk',
+        'tanggalEstimasi',
+        'tanggalAmbil',
+        'biayaPerbaikan',
+        'alasanBatal',
+        'status'
+    ];
 
     public $timestamps = false;
 }

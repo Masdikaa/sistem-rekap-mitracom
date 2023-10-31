@@ -12,13 +12,13 @@ class InputServiceController extends Controller
     public function index()
     {
         // Get kategori from datamaster
-        // $kategori = Kategori::pluck('kategori');
+        $kategori = Kategori::pluck('kategori');
         // $status = Barang::whereIn('status', ['selesai', 'batal', 'perbaikan', 'pengecekan'])->get();
 
-        // return view("pages.input-service", [
-        //     "kategori" => $kategori,
-        //     "status" => $status
-        // ]);
+        return view("pages.input-service", [
+            "kategori" => $kategori,
+            // "status" => $status
+        ]);
 
         return view("pages.input-service");
     }
@@ -32,5 +32,21 @@ class InputServiceController extends Controller
         ]);
 
         return redirect()->route('home');
+    }
+
+    public function storeBarang(Request $request)
+    {
+        dd($request);
+        // $barang = Barang::create([
+        //     'namaBarang' => ($request->input('namaBarang')),
+        //     'kerusakan' => $request->input('kerusakan'),
+        //     'kelengkapan' => $request->input('kelengkapan'),
+        //     'estimasiBiaya' => $request->input('estimasiBiaya'),
+        //     'tanggalMasuk' => $request->input('tanggalMasuk'),
+        //     'tanggalEstimasi' => $request->input('tanggalEstimasi'),
+        //     'tanggalAmbil' => $request->input('tanggalAmbil'),
+        //     'biayaPerbaikan' => $request->input('biayaPerbaikan'),
+        //     'status' => $request->input('status'),
+        // ]);
     }
 }
