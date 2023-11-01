@@ -1,81 +1,50 @@
-@extends('layouts.simple')
+@extends('layouts.simply')
 @section('title', 'Login Mitracom')
 @section('content')
 
-    <!-- Hero -->
-    <div class="hero bg-body-extra-light overflow-hidden">
-        <div class="hero-inner">
+    <section class="container">
 
-            {{-- Container Form --}}
-            <div class="content content-full text-center">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
 
-                <img class="my-4" src="{{ asset('build/assets/mitracom-icon.png') }}"
-                    style=" width: 30%;
-                      height: 30%;
-                      max-width: 100%;
-                      max-height: 100%;
-                     "
-                    alt="Mitracom">
-
-                {{-- <h4 class="fw-bold mb-2">
-                    Mitra<span class="fw-normal"><span class="text-city">com</span></span>
-                </h4>
-
-                <p class="fs-lg fw-medium text-muted mb-4">
-                    Solusi Problem Komputer Anda
-                </p> --}}
-
-                <div class="row justify-content-center mb-4">
-
-                    <div class="col-md-6 col-xl-4">
-                        <div class="block block-rounded h-100 mb-0">
-                            <div class="block-header block-header-default">
-                                <h3 class="block-title text-start">Sign In to Your Account</h3>
-                            </div>
-                            <div class="block-content fs-sm p-3">
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                @if (session('loginError'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('loginError') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                @endif
-
-                                <form action="/authenticate" method="POST">
-                                    @csrf
-
-                                    <div class="form-group text-start">
-                                        <label class="text-muted" for="exampleInputEmail1">
-                                            Username
-                                        </label>
-                                        <input type="text" class="form-control" id="usernamea" name="username" aria-describedby="emailHelp">
-                                    </div>
-
-                                    <div class="form-group text-start mt-4 md-4">
-                                        <label class="text-muted" for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password">
-                                    </div>
-
-                                    <button class="btn btn-primary px-4 mt-4" type="submit">Login</button>
-                                </form>
-
-                            </div>
-                        </div>
+                @if ($errors->any())
+                    <div class="alert alert-primary">
+                        <span>
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                        </span>
                     </div>
+                @endif
 
+                @if (session('loginError'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('loginError') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                <img src="{{ asset('build/assets/login-illustration.png') }}" alt="illustration" class="illustration" />
+                <h1 class="opacity">Mitracom</h1>
+
+                <form action="/authenticate" method="POST">
+
+                    @csrf
+                    <input type="text" name="username" id="username" placeholder="Username" />
+                    <input type="password" name="password" id="password" placeholder="Password" />
+
+                    <button type="submit" class="opacity">LOGIN</button>
+
+                </form>
+
+                <div class="register-forget opacity">
+                    <span>Solusi Problem Komputer Anda</span>
                 </div>
-
             </div>
-            {{-- End Container Form --}}
+            <div class="circle circle-two"></div>
         </div>
-    </div>
-    <!-- END Hero -->
+
+    </section>
+
 @endsection

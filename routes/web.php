@@ -60,6 +60,6 @@ Route::namespace('App\Http\Controllers')->group(function () {
         // Insert Data Customer
         Route::resource('/input-service', InputServiceController::class);
 
-        Route::post('/authenticate', [InputServiceController::class, 'storeBarang'])->name('store-barang');
+        Route::post('/store-barang', [InputServiceController::class, 'storeBarang'])->name('store-barang');
     });
 });

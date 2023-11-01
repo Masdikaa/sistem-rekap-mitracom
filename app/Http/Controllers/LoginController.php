@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    function index() {
+    function index()
+    {
         return view('login');
     }
 
@@ -29,14 +30,13 @@ class LoginController extends Controller
             if (auth()->user()->role == 'admin' || auth()->user()->role == 'superadmin') {
                 return redirect()->intended('/dashboard');
             } else {
-            return redirect()->intended('/rekapitulasi');}
+                return redirect()->intended('/rekapitulasi');
+            }
         }
 
-        // return back()->with('loginError', 'Login Failed!');
         return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
         ]);
-        // ->onlyInput('email');
     }
 
     /**
