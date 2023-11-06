@@ -18,4 +18,9 @@ class kategori extends Model
     ];
 
     public $timestamps = false;
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, 'idKategori');
+    }
 }

@@ -27,4 +27,19 @@ class Barang extends Model
     ];
 
     public $timestamps = false;
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'idCustomer');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idUser');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'idKategori');
+    }
 }

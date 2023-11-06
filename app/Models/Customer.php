@@ -20,4 +20,9 @@ class Customer extends Model
     ];
 
     public $timestamps = false;
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, 'idCustomer');
+    }
 }

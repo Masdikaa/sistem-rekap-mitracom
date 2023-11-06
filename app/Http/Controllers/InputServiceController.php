@@ -25,28 +25,47 @@ class InputServiceController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
+        // Insert to table customer
         $customer = Customer::create([
             'namaCustomer' => ($request->input('nama-customer')),
             'noHP' => $request->input('hp-customer'),
             'alamat' => $request->input('alamat-customer'),
         ]);
 
-        return redirect()->route('home');
-    }
+        $customer->relasiCustomer()->create([
+            'namaCustomer' => ($request->input('nama-customer')),
+            'noHP' => $request->input('hp-customer'),
+            'alamat' => $request->input('alamat-customer'),
+        ]);
 
-    public function storeBarang(Request $request)
-    {
-        dd($request);
-        // $barang = Barang::create([
-        //     'namaBarang' => ($request->input('namaBarang')),
-        //     'kerusakan' => $request->input('kerusakan'),
-        //     'kelengkapan' => $request->input('kelengkapan'),
-        //     'estimasiBiaya' => $request->input('estimasiBiaya'),
-        //     'tanggalMasuk' => $request->input('tanggalMasuk'),
-        //     'tanggalEstimasi' => $request->input('tanggalEstimasi'),
-        //     'tanggalAmbil' => $request->input('tanggalAmbil'),
-        //     'biayaPerbaikan' => $request->input('biayaPerbaikan'),
-        //     'status' => $request->input('status'),
-        // ]);
+        // Inset to table barang
+        $barang = Barang::create([
+            'namaBarang' => ($request->input('namaBarang')),
+            'kerusakan' => $request->input('kerusakan'),
+            'kelengkapan' => $request->input('kelengkapan'),
+            'estimasiBiaya' => $request->input('estimasiBiaya'),
+            'tanggalMasuk' => $request->input('tanggalMasuk'),
+            'tanggalEstimasi' => $request->input('tanggalEstimasi'),
+            'tanggalAmbil' => $request->input('tanggalAmbil'),
+            'biayaPerbaikan' => $request->input('biayaPerbaikan'),
+            // 'status' => $request->input('status'),
+            'status' => $request->input(strtolower('status')),
+        ]);
+
+        $barang->relasiBarang()->create([
+            'namaBarang' => ($request->input('namaBarang')),
+            'kerusakan' => $request->input('kerusakan'),
+            'kelengkapan' => $request->input('kelengkapan'),
+            'estimasiBiaya' => $request->input('estimasiBiaya'),
+            'tanggalMasuk' => $request->input('tanggalMasuk'),
+            'tanggalEstimasi' => $request->input('tanggalEstimasi'),
+            'tanggalAmbil' => $request->input('tanggalAmbil'),
+            'biayaPerbaikan' => $request->input('biayaPerbaikan'),
+            'status' => $request->input('status'),
+        ]);
+
+
+        return redirect()->route('home');
     }
 }

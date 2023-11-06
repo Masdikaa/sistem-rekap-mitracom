@@ -53,30 +53,7 @@
                         <textarea class="form-control" id="alamat-customer" name="alamat-customer" placeholder="Masukan alamat customer"></textarea>
                     </div>
 
-                    <div class="d-flex justify-content-end mt-4">
-                        <button type="submit" class="btn btn-primary">
-                            <span class="me-1">Simpan</span>
-                            <i class="nav-main-link-icon bi bi-sd-card"></i>
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-        {{-- End Input Data Customer --}}
-
-        <!-- Input Data Barang -->
-        <div class="block block-rounded">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">
-                    Input data service
-                </h3>
-            </div>
-            <div class="block-content block-content-full">
-                {{-- Form input data --}}
-                <form action="{{ route('store-barang') }}" method="POST" id="insertBarang">
-                    @csrf
-                    <div>
+                    <div class="mt-4">
                         <label class="form-label" for="kategoriBarang">Kategori Barang</label><small class="text-danger"> *</small>
                         <select class="form-select" name="kategori" id="kategori">
                             <option>Pilih Kategori</option>
@@ -185,7 +162,8 @@
                 </form>
             </div>
         </div>
-        <!-- End Input Data Barang -->
+        {{-- End Input Data Customer --}}
+
     </div>
     <!-- END Page Content -->
 @endsection
