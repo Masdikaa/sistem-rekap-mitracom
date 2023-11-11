@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InputServiceController;
+use App\Http\Controllers\RekapitulasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,12 +55,17 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
         // Route datamaster
         Route::resource('/datamaster-kategori', KategoriController::class);
+        
         Route::resource('/datamaster-user', UserController::class);
-        Route::resource('/datamaster-barang', BarangController::class);
 
-        // Insert Data Customer
-        Route::resource('/input-service', InputServiceController::class);
+        Route::resource('/rekapitulasi', RekapitulasiController::class);
 
-        Route::post('/store-barang', [InputServiceController::class, 'storeBarang'])->name('store-barang');
+        // Data Service
+        Route::resource('/input-service', InputServiceController::class);     
+        Route::get('/input-service/{id}/detail', [InputServiceController::class, 'detail'])->name('input-service.detail');   
+        Route::put('/input-service/{id}/fix', [InputServiceController::class, 'fix'])->name('input-service.fix');
+        Route::put('/input-service/{id}/batal', [InputServiceController::class, 'batal'])->name('input-service.batal');
+        Route::put('/input-service/{id}/proses', [InputServiceController::class, 'proses'])->name('input-service.proses');
+        Route::put('/input-service/{id}/selesai', [InputServiceController::class, 'selesai'])->name('input-service.selesai');
     });
 });

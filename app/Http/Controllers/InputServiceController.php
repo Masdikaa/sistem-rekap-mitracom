@@ -6,66 +6,107 @@ use App\Models\Barang;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Auth;
 
 class InputServiceController extends Controller
 {
     public function index()
     {
         // Get kategori from datamaster
-        $kategori = Kategori::pluck('kategori');
-        // $status = Barang::whereIn('status', ['selesai', 'batal', 'perbaikan', 'pengecekan'])->get();
-
-        return view("pages.input-service", [
-            "kategori" => $kategori,
-            // "status" => $status
+        $data = Barang::orderBy('idBarang', 'desc')->get();
+        return view("pages.service.index", [
+            "data" => $data,
         ]);
-
-        return view("pages.input-service");
+    }
+    public function create()
+    {
+        // Get kategori from datamaster
+        $kategori = Kategori::all();
+        return view("pages.service.create", [
+            "kategori" => $kategori,
+        ]);
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        // Insert to table customer
-        $customer = Customer::create([
-            'namaCustomer' => ($request->input('nama-customer')),
-            'noHP' => $request->input('hp-customer'),
-            'alamat' => $request->input('alamat-customer'),
-        ]);
+            $user = auth()->user();
 
-        $customer->relasiCustomer()->create([
-            'namaCustomer' => ($request->input('nama-customer')),
-            'noHP' => $request->input('hp-customer'),
-            'alamat' => $request->input('alamat-customer'),
-        ]);
+            $namaCustomer = $request->input('namaCustomer');
+            $noHP = $request->input('noHP');
+        
+            $existingCustomer = Customer::where('namaCustomer', $namaCustomer)
+            ->where('noHP', $noHP)
+            ->first();
 
-        // Inset to table barang
-        $barang = Barang::create([
-            'namaBarang' => ($request->input('namaBarang')),
+        if ($existingCustomer) {
+            $idCustomer = $existingCustomer->idCustomer;
+        } else {
+            $customer = new Customer;
+            $customer->namaCustomer = $namaCustomer;
+            $customer->noHP = $noHP;
+            $customer->alamat = $request->input('alamat');
+            $customer->save();
+            $idCustomer = $customer->idCustomer;
+        }
+            $barang = new Barang;
+            $barang->namaBarang = $request->input('namaBarang'); 
+            $barang->idKategori = $request->input('kategori');
+            $barang->kelengkapan = $request->input('kelengkapan');
+            $barang->tanggalMasuk = $request->input('tanggalMasuk');
+            $barang->idUser = $user->idUser;
+            $barang->idCustomer = $idCustomer;
+
+            $barang->save();
+            return redirect()->route('input-service.index');
+    }
+
+    public function detail($id)
+    {
+        $barang = Barang::with('customer')->findOrFail($id);
+        return response()->json(['barang' => $barang]);
+    }
+
+    public function fix(Request $request, $id) {
+
+        $data = Barang::findOrFail($id);
+        $data->update([
             'kerusakan' => $request->input('kerusakan'),
-            'kelengkapan' => $request->input('kelengkapan'),
             'estimasiBiaya' => $request->input('estimasiBiaya'),
-            'tanggalMasuk' => $request->input('tanggalMasuk'),
             'tanggalEstimasi' => $request->input('tanggalEstimasi'),
-            'tanggalAmbil' => $request->input('tanggalAmbil'),
-            'biayaPerbaikan' => $request->input('biayaPerbaikan'),
-            // 'status' => $request->input('status'),
-            'status' => $request->input(strtolower('status')),
+            'status' => 'selesaicek',
         ]);
 
-        $barang->relasiBarang()->create([
-            'namaBarang' => ($request->input('namaBarang')),
-            'kerusakan' => $request->input('kerusakan'),
-            'kelengkapan' => $request->input('kelengkapan'),
-            'estimasiBiaya' => $request->input('estimasiBiaya'),
-            'tanggalMasuk' => $request->input('tanggalMasuk'),
-            'tanggalEstimasi' => $request->input('tanggalEstimasi'),
-            'tanggalAmbil' => $request->input('tanggalAmbil'),
-            'biayaPerbaikan' => $request->input('biayaPerbaikan'),
-            'status' => $request->input('status'),
+        return redirect()->back()->with('success', 'Data updated successfully');
+    }
+
+    public function batal(Request $request, $id) {
+
+        $data = Barang::findOrFail($id);
+        $data->update([
+            'alasanBatal' => $request->input('alasanBatal'),
+            'status' => 'batal',
         ]);
 
+        return redirect()->back()->with('success', 'Data updated successfully');
+    }
+    public function proses(Request $request, $id) {
 
-        return redirect()->route('home');
+        $data = Barang::findOrFail($id);
+        $data->update([
+            'status' => 'perbaikan',
+        ]);
+
+        return redirect()->back()->with('success', 'Data updated successfully');
+    }
+    public function selesai(Request $request, $id) {
+
+        $data = Barang::findOrFail($id);
+        $data->update([
+            'biayaPerbaikan' => $request->input('biayaPerbaikan'),
+            'tanggalAmbil' => $request->input('tanggalAmbil'),
+            'status' => 'selesai',
+        ]);
+
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
 }

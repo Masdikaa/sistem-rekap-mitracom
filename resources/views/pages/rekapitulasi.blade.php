@@ -29,4 +29,44 @@
   </div>
 </div>
 <!-- END Hero -->
+ <!-- Page Content -->
+ <div class="content">
+
+  <!-- Dynamic Table Full -->
+  <div class="block block-rounded">
+      <div class="block-header block-header-default">
+          <h3 class="block-title">
+              Data Rekap
+          </h3>
+
+      </div>
+      <div class="block-content block-content-full">
+          <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->
+          <table class="table table-bordered table-striped table-vcenter js-dataTable-full fs-sm">
+              <thead>
+                  <tr>
+                      <th class="text-center" style="width: 80px;">No</th>
+                      <th class="text-center">Nama Barang</th>
+                      <th class="text-center">Nama Customer</th>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($data as $data)
+                      <tr>
+                          <td class="text-center">{{ $loop->iteration }}</td>
+                          <td class="fw-semibold text-center">{{ $data->namaBarang }}</td>
+                          <td class="fw-semibold text-center">{{ $data->customer->namaCustomer }}</td>
+                          
+                      </tr>
+                  @endforeach
+
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <!-- END Dynamic Table Full -->
+
+</div>
+<!-- END Page Content -->
 @endsection

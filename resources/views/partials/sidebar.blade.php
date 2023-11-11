@@ -86,40 +86,34 @@
 
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('input-service') ? ' active' : '' }}" href="/input-service">
-                        <i class="nav-main-link-icon bi bi-folder-plus"></i>
-                        <span class="nav-main-link-name">Input Service</span>
+                        <i class="nav-main-link-icon bi bi-tools"></i>
+                        <span class="nav-main-link-name">Data Service</span>
                     </a>
                 </li>
+                
 
-                <li class="nav-main-heading">Data Master</li>
-                <li class="nav-main-item {{ request()->is('*') ? 'open' : '' }}">
-
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                {{-- <li class="nav-main-heading">Data Master</li> --}}
+                <li class="nav-main-item nav-data-master-parent {{ request()->is('datamaster-*') ? 'open' : '' }}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="{{ request()->is('datamaster-*') ? 'true' : 'false' }}" href="#">
                         <i class="nav-main-link-icon bi bi-journal-plus"></i>
-                        <span class="nav-main-link-name">Tambahkan Data</span>
+                        <span class="nav-main-link-name">Data Master</span>
                     </a>
-
                     <ul class="nav-main-submenu">
-                        {{-- @can('viewAdminPanel', auth()->user()) --}}
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('datamaster-user') ? ' active' : '' }}" href="/datamaster-user">
                                 <span class="nav-main-link-name">User</span>
                             </a>
                         </li>
-
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('datamaster-kategori') ? ' active' : '' }}" href="/datamaster-kategori">
                                 <span class="nav-main-link-name">Kategori</span>
                             </a>
                         </li>
-
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('datamaster-barang') ? ' active' : '' }}" href="/datamaster-barang">
                                 <span class="nav-main-link-name">Barang</span>
                             </a>
                         </li>
-
-
                     </ul>
                 </li>
 
@@ -137,3 +131,15 @@
     </div>
     <!-- END Sidebar Scrolling -->
 </nav>
+
+<script>
+    // Add the "open" class to the parent Data Master link when a child link is active
+    document.addEventListener("DOMContentLoaded", function () {
+        const dataMasterLinks = document.querySelectorAll(".nav-data-master-parent a.nav-main-link");
+        dataMasterLinks.forEach((link) => {
+            if (link.classList.contains("active")) {
+                link.closest(".nav-data-master-parent").classList.add("open");
+            }
+        });
+    });
+</script>
