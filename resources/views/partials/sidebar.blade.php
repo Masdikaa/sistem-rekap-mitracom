@@ -90,32 +90,36 @@
                         <span class="nav-main-link-name">Data Service</span>
                     </a>
                 </li>
-                
+
 
                 {{-- <li class="nav-main-heading">Data Master</li> --}}
-                <li class="nav-main-item nav-data-master-parent {{ request()->is('datamaster-*') ? 'open' : '' }}">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="{{ request()->is('datamaster-*') ? 'true' : 'false' }}" href="#">
-                        <i class="nav-main-link-icon bi bi-journal-plus"></i>
-                        <span class="nav-main-link-name">Data Master</span>
-                    </a>
-                    <ul class="nav-main-submenu">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster-user') ? ' active' : '' }}" href="/datamaster-user">
-                                <span class="nav-main-link-name">User</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster-kategori') ? ' active' : '' }}" href="/datamaster-kategori">
-                                <span class="nav-main-link-name">Kategori</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('datamaster-barang') ? ' active' : '' }}" href="/datamaster-barang">
-                                <span class="nav-main-link-name">Barang</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @if (auth()->user()->role == 'superadmin')
+                    <li class="nav-main-item nav-data-master-parent {{ request()->is('datamaster-*') ? 'open' : '' }}">
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                            aria-expanded="{{ request()->is('datamaster-*') ? 'true' : 'false' }}" href="#">
+                            <i class="nav-main-link-icon bi bi-journal-plus"></i>
+                            <span class="nav-main-link-name">Data Master</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('datamaster-user') ? ' active' : '' }}" href="/datamaster-user">
+                                    <span class="nav-main-link-name">User</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('datamaster-kategori') ? ' active' : '' }}" href="/datamaster-kategori">
+                                    <span class="nav-main-link-name">Kategori</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('datamaster-barang') ? ' active' : '' }}" href="/datamaster-barang">
+                                    <span class="nav-main-link-name">Barang</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @elseif (auth()->user()->role == 'superadmin')
+                @endif
 
                 {{-- <li class="nav-main-heading">More</li>
                 <li class="nav-main-item open">
@@ -134,7 +138,7 @@
 
 <script>
     // Add the "open" class to the parent Data Master link when a child link is active
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const dataMasterLinks = document.querySelectorAll(".nav-data-master-parent a.nav-main-link");
         dataMasterLinks.forEach((link) => {
             if (link.classList.contains("active")) {

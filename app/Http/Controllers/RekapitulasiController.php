@@ -10,7 +10,7 @@ class RekapitulasiController extends Controller
     public function index()
     {
         // Get kategori from datamaster
-        $data = Barang::get();
+        $data = Barang::with('customer')->where('status', 'selesai')->get();
         return view("pages.rekapitulasi", [
             "data" => $data,
         ]);
