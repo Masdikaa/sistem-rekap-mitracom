@@ -92,6 +92,10 @@
     <!-- Page JS Code -->
     @vite(['resources/js/pages/datatables.js'])
 
+    {{-- Chart Dashboard --}}
+    <script src="{{ $totalCustomers->cdn() }}"></script>
+    {{ $totalCustomers->script() }}
+
 </body>
 
 </html>

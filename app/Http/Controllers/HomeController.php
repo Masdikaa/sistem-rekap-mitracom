@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Charts\TotalCustomerChart;
 
 class HomeController extends Controller
 {
-    function index() {
+    function index(TotalCustomerChart $totalCustomers) {
         
-        return view('pages.dashboard');
-    }
+        // dd($totalCustomers);
 
-    // function show($id) {
-    //     $ebook = Buku::find($id);
-    //     return view('show-ebook', [
-    //         'ebook' => $ebook
-    //     ]);
-    // }
+        return view('pages.dashboard',[
+            'totalCustomers' => $totalCustomers->build(),
+        ]);
+    }
 }
