@@ -39,7 +39,7 @@
             <div class="col-lg-6">
                 <div class="block block-rounded block-mode-loading-oneui">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Earnings in $</h3>
+                        <h3 class="block-title">Customer</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                                 <i class="si si-refresh"></i>
@@ -53,23 +53,18 @@
                     </div>
 
                     <div class="block-content">
-                        <div class="row items-push text-center py-3">
+                        <div class="row items-push d-flex justify-content-center text-center py-3">
                             <div class="col-6 col-xl-3">
-                                <i class="fa fa-wallet fa-2x text-muted"></i>
                                 Total Customer
                                 <div class="text-muted mt-3">$148,000</div>
                             </div>
                             <div class="col-6 col-xl-3">
-                                <i class="fa fa-angle-double-up fa-2x text-muted"></i>
+                                Coba
                                 <div class="text-muted mt-3">+9% Earnings</div>
                             </div>
                             <div class="col-6 col-xl-3">
-                                <i class="fa fa-ticket-alt fa-2x text-muted"></i>
+                                Coba
                                 <div class="text-muted mt-3">+20% Tickets</div>
-                            </div>
-                            <div class="col-6 col-xl-3">
-                                <i class="fa fa-users fa-2x text-muted"></i>
-                                <div class="text-muted mt-3">+46% Clients</div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +74,7 @@
             <div class="col-lg-6">
                 <div class="block block-rounded block-mode-loading-oneui">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Earnings in $</h3>
+                        <h3 class="block-title">Tipe</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                                 <i class="si si-refresh"></i>
@@ -101,5 +96,11 @@
 
     </div>
     <!-- END Page Content -->
+
+    <!-- Chart Dashboard Script -->
+    <script src="{{ $totalCustomers->cdn() }}"></script>
+    {{ $totalCustomers->script() }}
+    <script src="{{ $jenisBarang->cdn() }}"></script>
+    {{ $jenisBarang->script() }}
 
 @endsection

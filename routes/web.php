@@ -38,16 +38,16 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/', [HomeController::class, 'index']);
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
         // Admin
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard');
-        });
+        // Route::get('/dashboard', function () {
+        //     return view('pages.dashboard');
+        // });
 
-        Route::get('/example', function () {
-            return view('pages.dashboard');
-        });
+        // Route::get('/example', function () {
+        //     return view('pages.dashboard');
+        // });
 
         Route::get('/rekapitulasi', function () {
             return view('pages.rekapitulasi');

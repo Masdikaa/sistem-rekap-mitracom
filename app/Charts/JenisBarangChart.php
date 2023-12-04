@@ -17,15 +17,8 @@ class JenisBarangChart
     public function build(): DonutChart
     {
         $donutChart = $this->chart->donutChart()
-            ->addData([40, 50, 30, 50, 891])
-            ->setLabels(['L', 'P', 'C', 'B', 'A']);
-
-        // Modify the options to hide the legend
-        // $donutChart->setOptions([
-        //     'legend' => [
-        //         'show' => false, // Set show to false to hide the legend
-        //     ],
-        // ]);
+            ->addData([40, 50, 30])
+            ->setLabels(['Laptop', 'Printer', 'Computer']);
 
         return $donutChart;
     }
