@@ -34,29 +34,72 @@
 
     <!-- Page Content -->
     <div class="container-char mx-3 my-3 row g-1">
-        <div class="col-md-9 mb-3 me-2">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="h5 fw-bold mb-2">
-                        Grafik data customer
-                    </h1>
-                </div>
-                <div class="card-body">
-                    {!! $totalCustomers->container() !!}
-                </div>
-            </div>
-        </div>
+        <!-- Dashboard Charts -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="block block-rounded block-mode-loading-oneui">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Earnings in $</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                <i class="si si-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
 
-        <div class="col-md">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h1>Masdika</h1>
+                    <div class="block-content p-0 text-center">
+                        {!! $totalCustomers->container() !!}
+                        {{-- <div class="pt-3" style="height: 360px;"><canvas id="js-chartjs-dashboard-earnings"></canvas></div> --}}
+                    </div>
+
+                    <div class="block-content">
+                        <div class="row items-push text-center py-3">
+                            <div class="col-6 col-xl-3">
+                                <i class="fa fa-wallet fa-2x text-muted"></i>
+                                Total Customer
+                                <div class="text-muted mt-3">$148,000</div>
+                            </div>
+                            <div class="col-6 col-xl-3">
+                                <i class="fa fa-angle-double-up fa-2x text-muted"></i>
+                                <div class="text-muted mt-3">+9% Earnings</div>
+                            </div>
+                            <div class="col-6 col-xl-3">
+                                <i class="fa fa-ticket-alt fa-2x text-muted"></i>
+                                <div class="text-muted mt-3">+20% Tickets</div>
+                            </div>
+                            <div class="col-6 col-xl-3">
+                                <i class="fa fa-users fa-2x text-muted"></i>
+                                <div class="text-muted mt-3">+46% Clients</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="col-lg-6">
+                <div class="block block-rounded block-mode-loading-oneui">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Earnings in $</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                <i class="si si-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="block-content p-0 text-center">
+                        {!! $jenisBarang->container() !!}
+                        {{-- <div class="pt-3" style="height: 360px;"><canvas id="js-chartjs-dashboard-earnings"></canvas></div> --}}
+                    </div>
+
+
+                </div>
+            </div>
+
         </div>
+        <!-- END Dashboard Charts -->
+
     </div>
     <!-- END Page Content -->
+
 @endsection

@@ -30,7 +30,6 @@
     {{-- bootstrap --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
 
-
     <!-- Modules -->
     @yield('css')
     @vite(['resources/sass/main.scss', 'resources/js/oneui/app.js'])
@@ -95,6 +94,15 @@
     {{-- Chart Dashboard --}}
     <script src="{{ $totalCustomers->cdn() }}"></script>
     {{ $totalCustomers->script() }}
+    <script src="{{ $jenisBarang->cdn() }}"></script>
+    {{ $jenisBarang->script() }}
+
+    {{-- 
+    <script src="{{ asset('js/oneui.app.min.js') }}"></script>
+    <!-- Page JS Plugins -->
+    <script src="{{ asset('js/plugins/chart.js/chart.min.js') }}"></script>
+    <!-- Page JS Code -->
+    <script src="{{ asset('js/pages/be_pages_dashboard_v1.min.js') }}"></script> --}}
 
 </body>
 
