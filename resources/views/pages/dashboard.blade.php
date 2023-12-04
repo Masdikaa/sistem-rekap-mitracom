@@ -34,40 +34,59 @@
 
     <!-- Page Content -->
     <div class="container-char mx-3 my-3 row g-1">
+        <div class="row">
+
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full">
+                        <div class="fs-sm fw-semibold text-uppercase text-muted">Selesai</div>
+                        <div class="fs-2 fw-normal text-dark">{{ $barangSelesai }}</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full">
+                        <div class="fs-sm fw-semibold text-uppercase text-muted">Pengecekan</div>
+                        <div class="fs-2 fw-normal text-dark">{{ $barangPengecekan }}</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full">
+                        <div class="fs-sm fw-semibold text-uppercase text-muted">Perbaikan</div>
+                        <div class="fs-2 fw-normal text-dark">{{ $barangPerbaikan }}</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full">
+                        <div class="fs-sm fw-semibold text-uppercase text-muted">Batal</div>
+                        <div class="fs-2 fw-normal text-dark">{{ $barangBatal }}</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
         <!-- Dashboard Charts -->
         <div class="row">
             <div class="col-lg-6">
                 <div class="block block-rounded block-mode-loading-oneui">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Customer</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                <i class="si si-refresh"></i>
-                            </button>
-                        </div>
                     </div>
 
-                    <div class="block-content p-0 text-center">
+                    <div class="block-content p-3 text-center">
                         {!! $totalCustomers->container() !!}
                         {{-- <div class="pt-3" style="height: 360px;"><canvas id="js-chartjs-dashboard-earnings"></canvas></div> --}}
                     </div>
 
-                    <div class="block-content">
-                        <div class="row items-push d-flex justify-content-center text-center py-3">
-                            <div class="col-6 col-xl-3">
-                                Total Customer
-                                <div class="text-muted mt-3">$148,000</div>
-                            </div>
-                            <div class="col-6 col-xl-3">
-                                Coba
-                                <div class="text-muted mt-3">+9% Earnings</div>
-                            </div>
-                            <div class="col-6 col-xl-3">
-                                Coba
-                                <div class="text-muted mt-3">+20% Tickets</div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -75,14 +94,9 @@
                 <div class="block block-rounded block-mode-loading-oneui">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Tipe</h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                <i class="si si-refresh"></i>
-                            </button>
-                        </div>
                     </div>
 
-                    <div class="block-content p-0 text-center">
+                    <div class="block-content p-3 text-center">
                         {!! $jenisBarang->container() !!}
                         {{-- <div class="pt-3" style="height: 360px;"><canvas id="js-chartjs-dashboard-earnings"></canvas></div> --}}
                     </div>

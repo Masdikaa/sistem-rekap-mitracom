@@ -22,14 +22,13 @@ class TotalCustomerChart
         ->groupBy('month')
         ->orderByRaw('MONTH(tanggalMasuk)')
         ->get();
-    // $totalCustomers = Customer::count();
 
     $months = $barangData->pluck('month')->toArray();
     $counts = $barangData->pluck('count')->toArray();
 
     return $this->chart->barChart()
         ->addData('Data Customer', $counts)
-        ->setHeight(350)
+        ->setHeight(400)
         ->setGrid()
         ->setXAxis($months);
 }
