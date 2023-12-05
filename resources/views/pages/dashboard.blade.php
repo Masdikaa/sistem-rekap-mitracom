@@ -38,36 +38,64 @@
 
             <div class="col-6 col-md-3 col-lg-6 col-xl-3">
                 <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                    <div class="block-content block-content-full">
-                        <div class="fs-sm fw-semibold text-uppercase text-muted">Selesai</div>
-                        <div class="fs-2 fw-normal text-dark">{{ $barangSelesai }}</div>
+                    <div class="block-content block-content-full bg-success d-flex align-items-center">
+                        <div>
+                            <i class="fas fa-check-square fa-3x text-white mr-3"></i>
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <div class="fs-sm fw-semibold text-uppercase text-muted text-white">Selesai</div>
+                            <div class="fs-2 fw-normal text-white">{{ $barangSelesai }}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+            
+
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full bg-primary d-flex align-items-center">
+                        <div>
+                            <i class="fas fa-search fa-3x text-white mr-3"></i>
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <div class="fs-sm fw-semibold text-uppercase text-muted text-white">Pengecekan</div>
+                            <div class="fs-2 fw-normal text-white">{{ $barangPengecekan }}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+            
+
+            
+            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
+                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                    <div class="block-content block-content-full bg-warning d-flex align-items-center">
+                        <div>
+                            <i class="fas fa-tools fa-3x text-white mr-3"></i>
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <div class="fs-sm fw-semibold text-uppercase text-muted text-white">Perbaikan</div>
+                            <div class="fs-2 fw-normal text-white">{{ $barangPerbaikan }}</div>
+                        </div>
                     </div>
                 </a>
             </div>
 
             <div class="col-6 col-md-3 col-lg-6 col-xl-3">
                 <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                    <div class="block-content block-content-full">
-                        <div class="fs-sm fw-semibold text-uppercase text-muted">Pengecekan</div>
-                        <div class="fs-2 fw-normal text-dark">{{ $barangPengecekan }}</div>
-                    </div>
-                </a>
-            </div>
+                    <div class="block-content block-content-full bg-danger d-flex align-items-center">
+                        <div>
+                            <i class="fas fa-rectangle-xmark fa-3x text-white mr-3"></i>
 
-            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                    <div class="block-content block-content-full">
-                        <div class="fs-sm fw-semibold text-uppercase text-muted">Perbaikan</div>
-                        <div class="fs-2 fw-normal text-dark">{{ $barangPerbaikan }}</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-6 col-md-3 col-lg-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                    <div class="block-content block-content-full">
-                        <div class="fs-sm fw-semibold text-uppercase text-muted">Batal</div>
-                        <div class="fs-2 fw-normal text-dark">{{ $barangBatal }}</div>
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <div class="fs-sm fw-semibold text-uppercase text-muted text-white">Batal</div>
+                            <div class="fs-2 fw-normal text-white">{{ $barangBatal }}</div>
+                        </div>
                     </div>
                 </a>
             </div>

@@ -17,10 +17,19 @@ class JenisBarangChart
 
     public function build(): PieChart
     {
+        $barangData = Barang::selectRaw('COUNT(*) as count, idKategori')
+            ->groupBy('idKategori')
+            ->get();
+
+        $categories = $barangData->pluck('idKategori')->toArray();
+        $counts = $barangData->pluck('count')->toArray();
+
+       // dd($categories);
+
         $jenisBarang = $this->chart->pieChart()
-            ->addData([40, 50, 30])
+            ->addData([$counts[0], $counts[1], $counts[2]])
             ->setHeight(410)
-            ->setLabels(['Laptop', 'Printer', 'Computer']);
+            ->setLabels(['PC', 'Laptop', 'Printer']);
         
         return $jenisBarang;
     }
