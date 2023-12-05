@@ -44,6 +44,9 @@ Route::namespace('App\Http\Controllers')->group(function () {
         // Route::get('/dashboard', function () {
         //     return view('pages.dashboard');
         // });
+        // Route::get('/dashboard', function () {
+        //     return view('pages.dashboard');
+        // });
 
         // Route::get('/example', function () {
         //     return view('pages.dashboard');

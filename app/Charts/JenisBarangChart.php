@@ -3,7 +3,8 @@
 namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
-use ArielMejiaDev\LarapexCharts\DonutChart;
+use ArielMejiaDev\LarapexCharts\PieChart;
+use App\Models\Barang;
 
 class JenisBarangChart
 {
@@ -14,19 +15,13 @@ class JenisBarangChart
         $this->chart = $chart;
     }
 
-    public function build(): DonutChart
+    public function build(): PieChart
     {
-        $donutChart = $this->chart->donutChart()
-            ->addData([40, 50, 30, 50, 891])
-            ->setLabels(['L', 'P', 'C', 'B', 'A']);
-
-        // Modify the options to hide the legend
-        // $donutChart->setOptions([
-        //     'legend' => [
-        //         'show' => false, // Set show to false to hide the legend
-        //     ],
-        // ]);
-
-        return $donutChart;
+        $jenisBarang = $this->chart->pieChart()
+            ->addData([40, 50, 30])
+            ->setHeight(410)
+            ->setLabels(['Laptop', 'Printer', 'Computer']);
+        
+        return $jenisBarang;
     }
 }
