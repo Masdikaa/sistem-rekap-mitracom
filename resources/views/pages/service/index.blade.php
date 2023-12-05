@@ -39,6 +39,21 @@
         <h3 class="block-title">
           Table Barang
         </h3>
+
+        <div class="col col-md-3">
+          <select class="form-select form-select-sm" name="tanggalMasuk" id="filterByMonth">
+              <option selected disabled>Filter Bulan</option>
+              <option value="">Semua Bulan</option>
+              @for ($i = 1; $i <= 12; $i++)
+                  @php
+                      $month = str_pad($i, 2, '0', STR_PAD_LEFT); // Zero-padding for single-digit months
+                      $monthName = date('F', mktime(0, 0, 0, $i, 1));
+                  @endphp
+                  <option value="{{ $month }}" @if(request('tanggalMasuk') == $month) selected @endif>{{ $monthName }}</option>
+              @endfor
+          </select>
+      </div>
+      
       </div>
       <div class="block-content block-content-full">
         <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->
@@ -124,3 +139,14 @@
    
 
 @endsection
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('filterByMonth').addEventListener('change', function() {
+          var selectedMonth = this.value;
+          var currentUrl = window.location.href.split('?')[0]; // Get the current URL
+          var newUrl = currentUrl + '?tanggalMasuk=' + selectedMonth; // Append the selected month as query parameter
+          window.location.href = newUrl; // Redirect to the new URL with the selected month filter
+      });
+  });
+</script>

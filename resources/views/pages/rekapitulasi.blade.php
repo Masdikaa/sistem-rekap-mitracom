@@ -12,7 +12,7 @@
           REKAPITULASI
         </h1>
         <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-          ini page rekapitulasi
+          Print lembar rekapitulasi dengan sekali klik
         </h2>
       </div>
       <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -33,40 +33,46 @@
  <div class="content">
 
   <!-- Dynamic Table Full -->
-  <div class="block block-rounded">
-      <div class="block-header block-header-default">
-          <h3 class="block-title">
-              Data Rekap
-          </h3>
 
-      </div>
-      <div class="block-content block-content-full">
-          <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->
-          <table class="table table-bordered table-striped table-vcenter js-dataTable-full fs-sm">
-              <thead>
-                  <tr>
-                      <th class="text-center" style="width: 80px;">No</th>
-                      <th class="text-center">Nama Barang</th>
-                      <th class="text-center">Nama Customer</th>
-                      
-                  </tr>
-              </thead>
-              <tbody>
-                  @foreach ($data as $data)
-                      <tr>
-                          <td class="text-center">{{ $loop->iteration }}</td>
-                          <td class="fw-semibold text-center">{{ $data->namaBarang }}</td>
-                          <td class="fw-semibold text-center">{{ $data->customer->namaCustomer }}</td>
-                          
-                      </tr>
-                  @endforeach
+<div class="year-month-filter">
+  <!-- rekapitulasi.blade.php -->
+@for ($year = date('Y'); $year >= date('Y') - 4; $year--)
+<div class="year-section" style="margin-bottom: 20px;">
+    <h5>{{ $year }}</h5>
+    <div class="month-buttons" style="display: flex; gap: 10px; margin-top: 10px;">
+        @for ($month = 1; $month <= 12; $month++)
+            @php
+                $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+                $monthName = date('F', mktime(0, 0, 0, $month, 1));
+            @endphp
+           <a href="#" onclick="printPage('{{ route('rekapitulasi.print', ['year' => $year, 'month' => $month]) }}')" class="btn btn-outline-secondary" style="margin-bottom: 10px;">{{ $monthName }}</a>
 
-              </tbody>
-          </table>
-      </div>
-  </div>
+        @endfor
+    </div>
+</div>
+@endfor
+
+</div>
+
+
+
+
+
+
   <!-- END Dynamic Table Full -->
 
 </div>
 <!-- END Page Content -->
 @endsection
+
+<script>
+  function printPage(url) {
+      // Open a new window with the provided URL
+      const newWindow = window.open(url, '_blank');
+
+      // Once the window loads, trigger the print dialog
+      newWindow.onload = () => {
+          newWindow.print();
+      };
+  }
+</script>

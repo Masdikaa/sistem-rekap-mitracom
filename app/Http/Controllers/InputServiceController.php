@@ -10,10 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class InputServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Get kategori from datamaster
-        $data = Barang::orderBy('idBarang', 'desc')->get();
+        $filters = $request->only('kategori', 'status', 'tanggalMasuk');
+
+        $tanggalMasuk = $filters['tanggalMasuk'] ?? null;
+
+        $data = Barang::filter($filters)
+        ->when($tanggalMasuk, function ($query) use ($tanggalMasuk) {
+            return $query->whereMonth('tanggalMasuk', $tanggalMasuk);
+        })
+        ->orderBy('idBarang', 'desc')
+        ->get();
+
         return view("pages.service.index", [
             "data" => $data,
         ]);

@@ -92,10 +92,10 @@
     @vite(['resources/js/pages/datatables.js'])
 
     {{-- Chart Dashboard --}}
-    <script src="{{ $totalCustomers->cdn() }}"></script>
+    {{-- <script src="{{ $totalCustomers->cdn() }}"></script>
     {{ $totalCustomers->script() }}
     <script src="{{ $jenisBarang->cdn() }}"></script>
-    {{ $jenisBarang->script() }}
+    {{ $jenisBarang->script() }} --}}
 
     {{-- 
     <script src="{{ asset('js/oneui.app.min.js') }}"></script>

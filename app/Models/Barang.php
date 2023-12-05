@@ -42,4 +42,14 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class, 'idKategori');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        // Existing filter scope logic for 'kategori' and 'status'
+        
+        // Add a new scope or modify existing scope for 'tanggalMasuk'
+        $query->when($filters['tanggalMasuk'] ?? false, function ($query, $month) {
+            return $query->whereMonth('tanggalMasuk', $month);
+        });
+    }
 }

@@ -38,27 +38,36 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/', [HomeController::class, 'index']);
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('index');
 
         // Admin
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard');
-        });
+        // Route::get('/dashboard', function () {
+        //     return view('pages.dashboard');
+        // });
 
-        Route::get('/example', function () {
-            return view('pages.dashboard');
-        });
+        // Route::get('/example', function () {
+        //     return view('pages.dashboard');
+        // });
 
-        Route::get('/rekapitulasi', function () {
-            return view('pages.rekapitulasi');
-        });
+        // Route::get('/rekapitulasi', function () {
+        //     return view('pages.rekapitulasi');
+        // });
 
         // Route datamaster
         Route::resource('/datamaster-kategori', KategoriController::class);
         
         Route::resource('/datamaster-user', UserController::class);
 
-        Route::resource('/rekapitulasi', RekapitulasiController::class);
+        // Route::resource('/rekapitulasi', RekapitulasiController::class);
+
+        // web.php
+
+
+        Route::get('/rekapitulasi', [RekapitulasiController::class, 'index'])->name('rekapitulasi.index');
+        // Route::get('/rekapitulasi/print', [RekapitulasiController::class, 'print'])->name('rekapitulasi.print');
+        Route::get('/rekapitulasi/print/{year}/{month}', [RekapitulasiController::class, 'print'])->name('rekapitulasi.print');
+
+
 
         // Data Service
         Route::resource('/input-service', InputServiceController::class);     

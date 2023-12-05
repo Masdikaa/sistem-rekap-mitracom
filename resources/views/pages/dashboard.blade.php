@@ -102,4 +102,9 @@
     </div>
     <!-- END Page Content -->
 
+    <script src="{{ $totalCustomers->cdn() }}"></script>
+    {{ $totalCustomers->script() }}
+    <script src="{{ $jenisBarang->cdn() }}"></script>
+    {{ $jenisBarang->script() }}
+
 @endsection
